@@ -3,7 +3,6 @@ import { NotFound } from "./pages/404";
 class Router {
   constructor(routes) { // Recibimos array de objetos con las rutas
     this.routes = routes;
-    this.root = '/';
   }
 
   init() {
@@ -15,6 +14,13 @@ class Router {
     window.addEventListener('popstate', () => {
       this.route(window.location.pathname);
     });
+    window.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+        window.history.pushState(null, '', e.target.href);
+        this.route(e.target.pathname);
+      }
+    });
   }
 
   navigateInitialPage() {
@@ -24,9 +30,15 @@ class Router {
   route(path) {
     const matchedRoute = this.routes.find(route => route.path === path);
     if (matchedRoute) {
-      app.appendChild(matchedRoute.component());
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+      container.appendChild(matchedRoute.component());
     } else {
-      app.appendChild(NotFound());
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+      container.appendChild(NotFound());
     }
   }
 }
