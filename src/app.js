@@ -1,5 +1,5 @@
 import Footer from "./components/Footer.js";
-import Header from "./components/Header.js"
+import Header from "./components/Header.js";
 
 let firstRender = true;
 
@@ -18,6 +18,7 @@ const App = () => {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
+
 }
 
 export default App

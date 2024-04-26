@@ -1,3 +1,4 @@
+import ModalProduct from "./components/ModalProduct";
 import { NotFound } from "./pages/404";
 
 class Router {
@@ -29,11 +30,13 @@ class Router {
 
   route(path) {
     const matchedRoute = this.routes.find(route => route.path === path);
+
     if (matchedRoute) {
       while (container.firstChild) {
         container.removeChild(container.firstChild);
       }
       container.appendChild(matchedRoute.component());
+
     } else {
       while (container.firstChild) {
         container.removeChild(container.firstChild);

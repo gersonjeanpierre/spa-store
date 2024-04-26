@@ -21,3 +21,21 @@ h1 {
   line-height: 1.1;
 }
 
+#container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 15% repeat(auto-fill, minmax(300px, 1fr)) 15%;
+  gap: 1em;
+  
+
+}
+
+#store {
+  grid-column:  2 / -2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1em;
+  justify-items: center;
+  align-items: center;
+}
