@@ -55,7 +55,7 @@ class CardProduct extends HTMLElement {
     return /*css*/ `
 
       .product-card {
-        justify-content: center;    
+        justify-content: center;
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
