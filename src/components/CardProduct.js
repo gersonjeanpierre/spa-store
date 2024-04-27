@@ -1,7 +1,10 @@
 import { firstLetterToUpperCase } from "../helpers/functionsStore";
 import ModalProduct from "./ModalProduct";
+import Product from "./Product";
 
 class CardProduct extends HTMLElement {
+  static name = 'card-product';
+
   constructor(product, shoppingCart) {
     super();
     this.product = product;
@@ -33,9 +36,19 @@ class CardProduct extends HTMLElement {
   }
 
   openModal() {
-    const modal = new ModalProduct(this.product, this.shoppingCart);
-    modal.id = `modal-${this.product.id}`;
-    container.appendChild(modal);
+    const item = new Product(this.product, this.shoppingCart);
+    item.id = `product-${this.product.id}`;
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+    container.appendChild(item);
+
+    // Actualizar la URL sin recargar la página
+    history.pushState(null, '', `store/product?id=${this.product.id}`);
+
+
+
+
   }
 
   style() {

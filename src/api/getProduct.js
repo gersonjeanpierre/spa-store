@@ -1,13 +1,17 @@
-const api = "https://dummyjson.com/products";
+import axios from "axios";
 
-export const getProducts = async () => {
+const api = "https://dummyjson.com/products?limit=100";
 
+const getProducts = async () => {
   try {
-    const response = await fetch(api);
-    const data = await response.json();
-    return data.products;
-  } catch (error) {
-    console.error('Error fetching data', error);
-  }
+    const response = await axios.get(api);
+    const products = response.data.products;
+    window.products = products;
+    return products;
 
-}
+  } catch (error) {
+    console.error("Error fetching data", error);
+  }
+};
+
+export default getProducts;

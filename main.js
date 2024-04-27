@@ -4,20 +4,17 @@ import viteLogo from '/vite.svg'
 import App from './src/app.js'
 import Router from './src/router.js'
 import routes from './src/routes.js'
-import { getProducts } from './src/api/getProduct.js'
+import getProducts from './src/api/getProduct.js'
 import CardProduct from './src/components/CardProduct.js'
-import { firstLetterToUpperCase } from './src/helpers/functionsStore.js'
-import ModalProduct from './src/components/ModalProduct.js'
+import Product from './src/components/Product.js'
 
-// Products en el scope global
-let products = await getProducts();
-window.products = products;
 
+await getProducts();
 
 
 // Custom Elements
-window.customElements.define('card-product', CardProduct)
-window.customElements.define('modal-product', ModalProduct)
+window.customElements.define(Product.name, Product)
+window.customElements.define(CardProduct.name, CardProduct)
 
 // Render App
 document.addEventListener('DOMContentLoaded', App());

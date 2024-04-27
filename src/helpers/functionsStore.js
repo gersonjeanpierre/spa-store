@@ -9,5 +9,6 @@ export const firstLetterToUpperCase = (string) => {
     // console.log(words);
     return words.join(' ');
   };
+
   return string;
 }
