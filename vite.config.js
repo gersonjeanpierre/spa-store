@@ -2,5 +2,10 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/spa-store'
+  base: '/spa-store',
+  optimizeDeps: {
+    esbuildOptions: {
+      target: "esnext",
+    },
+  },
 })
