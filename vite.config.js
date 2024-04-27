@@ -1,8 +1,9 @@
 // vite.config.js
 import { defineConfig } from 'vite'
+const repo = 'spa-store'
 
 export default defineConfig({
-  base: '/spa-store',
+  base: `/${repo}/`,
 
   build: {
     target: "es2022"
