@@ -1,12 +1,9 @@
 import Product from "../components/Product"
 
-
-
 const ProductItem = (idProduct) => {
-
-
-
-  const item = new Product(window.products.find(product => product.id == idProduct));
+  const container = document.getElementById('container');
+  const products = window.products;
+  const item = new Product(products.find(product => product.id == idProduct));
   item.id = `product-${idProduct}`;
 
   //borrar el contenedor
@@ -14,8 +11,6 @@ const ProductItem = (idProduct) => {
     container.removeChild(container.firstChild);
   }
   container.appendChild(item);
-
-
 }
 
 export default ProductItem

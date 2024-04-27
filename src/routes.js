@@ -5,9 +5,9 @@ import Store from "./pages/Store.js";
 
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/store', component: Store },
-  { path: '/store/product', component: ProductItem },
+  { path: '/spa-store/', component: Home },
+  { path: '/spa-store/store', component: Store },
+  { path: '/spa-store/store/product', component: ProductItem },
 ];
 
 export default routes;

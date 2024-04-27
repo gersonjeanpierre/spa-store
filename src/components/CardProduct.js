@@ -1,5 +1,4 @@
 import { firstLetterToUpperCase } from "../helpers/functionsStore";
-import ModalProduct from "./ModalProduct";
 import Product from "./Product";
 
 class CardProduct extends HTMLElement {
@@ -13,7 +12,6 @@ class CardProduct extends HTMLElement {
 
   connectedCallback() {
     const shadow = this.attachShadow({ mode: "open" });
-    // const brand = this.product.brand;
 
     shadow.innerHTML = /*html*/ `
       <style>${this.style()}</style>
@@ -30,12 +28,10 @@ class CardProduct extends HTMLElement {
       </div>
     `;
     const openModal = shadow.querySelector('.image');
-    openModal.addEventListener('click', () => this.openModal());
-    // const button = shadow.querySelector('button');
-    // button.addEventListener('click', () => this.addToCart());
+    openModal.addEventListener('click', () => this.openProductItem());
   }
 
-  openModal() {
+  openProductItem() {
     const item = new Product(this.product, this.shoppingCart);
     item.id = `product-${this.product.id}`;
     while (container.firstChild) {
@@ -45,10 +41,6 @@ class CardProduct extends HTMLElement {
 
     // Actualizar la URL sin recargar la página
     history.pushState(null, '', `store/product?id=${this.product.id}`);
-
-
-
-
   }
 
   style() {
@@ -120,10 +112,6 @@ class CardProduct extends HTMLElement {
       }`
   }
 
-
-  // addToCart() {
-  //   this.shoppingCart.addProduct(this.product);
-  // }
 }
 
 export default CardProduct;
